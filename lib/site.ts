@@ -8,7 +8,7 @@ export const SITE = {
   },
   token: {
     ticker: "KIRA",
-    ca: "PASTE_TOKEN_CA_HERE",
+    ca: "37CyTRN7T8VEhmC9rKp7M2wxfYzSAjtWPuEPo8Xwpump",
     network: "Solana",
   },
 } as const;
