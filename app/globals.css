@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --red: #e8112d;
+  --red-deep: #a60a1e;
+  --ink: #0a0a0b;
+  --paper: #ffffff;
+  --smoke: #6b6b70;
+  --line: #e6e6e9;
+}
+
+@theme inline {
+  --color-red: var(--red);
+  --color-red-deep: var(--red-deep);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-smoke: var(--smoke);
+  --color-line: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+.mono {
+  font-family: ui-monospace, "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+  font-feature-settings: "ss01";
+}
+
+.stroke {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.stroke-red {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--red);
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}
+
+.grid-lines {
+  background-image: linear-gradient(to right, rgba(10, 10, 11, 0.06) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+
+.scan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(232, 17, 45, 0.12) 50%, transparent 100%);
+  height: 40%;
+  animation: scan 2.6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(250%);
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .scan::after,
+  .caret {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
